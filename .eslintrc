@@ -17,6 +17,7 @@
     "jest": false,
     "describe": false,
     "it": false,
+    "expect": false,
     "window": true,
     "document": true,
     "localStorage": true,
