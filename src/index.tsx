@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Web3Provider from 'react-web3-provider'
-import App from './components/App'
 import * as serviceWorker from './serviceWorker'
-import './index.css'
+import App from './components/App'
+import 'bulma/css/bulma.css'
 
 const Web3WrappedApp = (
   <Web3Provider>
