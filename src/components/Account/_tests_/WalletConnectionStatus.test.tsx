@@ -1,7 +1,7 @@
 import React from 'react'
 import { configure, mount } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
-import WalletConnectionStatus from './WalletConnectionStatus'
+import WalletConnectionStatus from '../WalletConnectionStatus'
 
 configure({ adapter: new Adapter() })
 
@@ -21,7 +21,7 @@ describe('WalletConnectionStatus', () => {
     wrapper.update()
     // @TODO: fix/improve this re-render based on props change
     setTimeout(() => {
-      expect(wrapper.find('span').text()).toEqual(ethAccount)
+      expect(wrapper.find('span').text()).toEqual(`Connected with: ${ethAccount}`)
       done()
     }, 4000)
   })

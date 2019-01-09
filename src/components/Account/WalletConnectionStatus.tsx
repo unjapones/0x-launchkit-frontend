@@ -8,15 +8,15 @@ interface IWalletConnectionStatusState {
   ethAccount: string
 }
 
-class WalletConnectionStatus extends React.Component<IWalletConnectionStatusProps, IWalletConnectionStatusState> {
-  constructor (props: any) {
-    super(props)
-    this.state = {
-      ethAccount: ''
-    }
+class WalletConnectionStatus extends React.Component<
+  IWalletConnectionStatusProps,
+  IWalletConnectionStatusState
+> {
+  public state = {
+    ethAccount: ''
   }
 
-  public componentDidUpdate (prevProps: IWalletConnectionStatusProps) {
+  public componentDidUpdate = (prevProps: IWalletConnectionStatusProps) => {
     const { web3 } = this.props
     if (prevProps.web3 !== web3) {
       const { ethAccount } = this.state
@@ -28,15 +28,20 @@ class WalletConnectionStatus extends React.Component<IWalletConnectionStatusProp
     }
   }
 
-  public render () {
+  public render = () => {
     const { ethAccount } = this.state
     return (
       <div className='wallet-connection-status'>
-        <span>{ethAccount || 'Not connected'}</span>
+        <span>{ethAccount ? `Connected with: ${ethAccount}` : 'Not connected'}</span>
       </div>
     )
   }
 }
 
-export const WalletConnectionStatusWithWeb3 = withWeb3(WalletConnectionStatus)
+const WalletConnectionStatusWithWeb3 = withWeb3(WalletConnectionStatus)
+
+export {
+  WalletConnectionStatusWithWeb3,
+  WalletConnectionStatus
+}
 export default WalletConnectionStatus
