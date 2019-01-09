@@ -21,7 +21,7 @@ describe('WalletConnectionStatus', () => {
     wrapper.update()
     // @TODO: fix/improve this re-render based on props change
     setTimeout(() => {
-      expect(wrapper.find('span').text()).toEqual(ethAccount)
+      expect(wrapper.find('span').text()).toEqual(`Connected with: ${ethAccount}`)
       done()
     }, 4000)
   })

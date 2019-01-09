@@ -32,11 +32,16 @@ class WalletConnectionStatus extends React.Component<IWalletConnectionStatusProp
     const { ethAccount } = this.state
     return (
       <div className='wallet-connection-status'>
-        <span>{ethAccount || 'Not connected'}</span>
+        <span>{ethAccount ? `Connected with: ${ethAccount}` : 'Not connected'}</span>
       </div>
     )
   }
 }
 
-export const WalletConnectionStatusWithWeb3 = withWeb3(WalletConnectionStatus)
+const WalletConnectionStatusWithWeb3 = withWeb3(WalletConnectionStatus)
+
+export {
+  WalletConnectionStatusWithWeb3,
+  WalletConnectionStatus
+}
 export default WalletConnectionStatus
