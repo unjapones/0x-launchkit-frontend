@@ -3,6 +3,7 @@ import { withWeb3 } from 'react-web3-provider'
 import { HttpClient } from '@0x/connect'
 import getRelayerClient from '../../lib/getRelayerClient'
 import { CreateOrder } from './CreateOrder'
+import { Title } from 'bloomer'
 
 interface ICreateOrderWithClientProps {
   web3?: any
@@ -35,21 +36,23 @@ class CreateOrderWithClient extends React.Component<ICreateOrderWithClientProps,
   public render () {
     const { ethAccount } = this.state
     const { web3 } = this.props
-    if (web3 && ethAccount) {
-      return (
-        <div className='CreateOrderWithClient'>
-          <CreateOrder
-            relayerClient={this.relayerClient}
-            provider={web3.currentProvider}
-            makerAddress={ethAccount}
-            makerAssetSymbol='WETH'
-            takerAssetSymbol='ZRX'
-          />
-        </div>
+    const content = (web3 && ethAccount) ?
+      (
+        <CreateOrder
+          relayerClient={this.relayerClient}
+          provider={web3.currentProvider}
+          makerAddress={ethAccount}
+          makerAssetSymbol='WETH'
+          takerAssetSymbol='ZRX'
+        />
       )
-    } else {
-      return null
-    }
+      : null
+    return (
+      <React.Fragment>
+        <Title isSize={2}>Create Basic Order</Title>
+        {content}
+      </React.Fragment>
+    )
   }
 }
 

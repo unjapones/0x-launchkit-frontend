@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom'
 import Web3Provider from 'react-web3-provider'
 import * as serviceWorker from './serviceWorker'
 import App from './components/App'
-import 'bulma/css/bulma.css'
+// import 'bulma/css/bulma.css'
+import './bulmaswatch-material.min.css'
 
 const Web3WrappedApp = (
   <Web3Provider>
