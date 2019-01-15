@@ -98,6 +98,7 @@ class BasicMakerOrdersList extends React.Component<IBasicMakerOrdersListProps, I
 
   private renderTable = () => {
     const { paginatedCollection } = this.state
+    const nowDate = new Date()
     const orderRows = paginatedCollection.records.map((record: APIOrder) => {
       const { order } = record
       const makerAssetData = assetDataUtils.decodeAssetDataOrThrow(order.makerAssetData) as ERC20AssetData
@@ -112,6 +113,7 @@ class BasicMakerOrdersList extends React.Component<IBasicMakerOrdersListProps, I
           new BigNumber(order.takerAssetAmount),
           takerToken.decimals
         ).toFixed(DEFAULT_UNIT_AMOUNT_DECIMALS)
+      const expirationDate = new Date(new BigNumber(order.expirationTimeSeconds).toNumber() * 1000)
       return (
         <tr key={order.salt.toString()}>
           <td>
@@ -127,6 +129,11 @@ class BasicMakerOrdersList extends React.Component<IBasicMakerOrdersListProps, I
             {takerToken.symbol}
             <br/>
             {takerAssetAmount}
+          </td>
+          <td>
+            {`${expirationDate.toUTCString()} (UTC)`}
+            <br/>
+            {expirationDate < nowDate ? 'EXPIRED' : ''}
           </td>
         </tr>
       )
@@ -152,6 +159,9 @@ class BasicMakerOrdersList extends React.Component<IBasicMakerOrdersListProps, I
               Asset
               <br/>
               Amount
+            </td>
+            <td>
+              Expiration
             </td>
           </tr>
         </thead>

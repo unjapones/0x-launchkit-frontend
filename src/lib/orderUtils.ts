@@ -60,7 +60,7 @@ export async function createBasicSignedOrder (
     ),
     salt: generatePseudoRandomSalt(),
     exchangeAddress: EXCHANGE_ADDRESS,
-    expirationTimeSeconds: EXPIRATION_TIME,
+    expirationTimeSeconds: new BigNumber(Math.floor(Date.now() / 1000)).add(EXPIRATION_TIME),
     takerAddress: NULL_ADDRESS,
     senderAddress: NULL_ADDRESS,
     feeRecipientAddress: NULL_ADDRESS,
