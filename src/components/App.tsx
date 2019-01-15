@@ -12,7 +12,7 @@ import {
 } from 'bloomer'
 import { WalletConnectionStatusWithWeb3 } from './Account'
 import { AssetPairsList } from './Assets'
-import { CreateBasicOrderExample } from './Order'
+import { CreateBasicOrderExample, BasicMakerOrdersListExample } from './Order'
 import './App.css'
 
 const APP_CLASSNAME = 'app-container'
@@ -41,7 +41,12 @@ const App = () => (
           <AssetPairsList />
         </Column>
         <Column isSize='1/2'>
-          <CreateBasicOrderExample />
+          <Container>
+            <CreateBasicOrderExample />
+          </Container>
+          <Container>
+            <BasicMakerOrdersListExample />
+          </Container>
         </Column>
       </Columns>
     </Container>

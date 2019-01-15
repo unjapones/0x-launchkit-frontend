@@ -1,3 +1,5 @@
 export { CreateBasicOrder } from './CreateBasicOrder'
 export { CreateBasicOrderExample } from './CreateBasicOrderExample'
 export { BasicOrderForm } from './BasicOrderForm'
+export { BasicMakerOrdersList } from './BasicMakerOrdersList'
+export { BasicMakerOrdersListExample } from './BasicMakerOrdersListExample'
