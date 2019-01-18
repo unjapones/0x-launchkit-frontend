@@ -12,7 +12,7 @@ import {
 } from 'bloomer'
 import { WalletConnectionStatusWithWeb3 } from './Account'
 import { AssetPairsList } from './Assets'
-import { CreateBasicOrderExample } from './Order'
+import { CreateBasicOrderExample, BasicMakerOrdersListExample } from './Order'
 import './App.css'
 
 const APP_CLASSNAME = 'app-container'
@@ -20,7 +20,7 @@ const APP_CLASSNAME = 'app-container'
 const App = () => (
   <React.Fragment>
     <Navbar className='is-dark'>
-      <Container>
+      <Container isFluid>
         <NavbarBrand>
           <NavbarStart>
             <NavbarItem href='/' isHidden='touch'><strong>0x-launchkit-frontend</strong></NavbarItem>
@@ -35,13 +35,12 @@ const App = () => (
         </NavbarMenu>
       </Container>
     </Navbar>
-    <Container className={APP_CLASSNAME}>
+    <Container className={APP_CLASSNAME} isFluid>
       <Columns>
-        <Column isSize='1/2'>
+        <Column>
           <AssetPairsList />
-        </Column>
-        <Column isSize='1/2'>
           <CreateBasicOrderExample />
+          <BasicMakerOrdersListExample />
         </Column>
       </Columns>
     </Container>
