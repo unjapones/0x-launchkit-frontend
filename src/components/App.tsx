@@ -20,7 +20,7 @@ const APP_CLASSNAME = 'app-container'
 const App = () => (
   <React.Fragment>
     <Navbar className='is-dark'>
-      <Container>
+      <Container isFluid>
         <NavbarBrand>
           <NavbarStart>
             <NavbarItem href='/' isHidden='touch'><strong>0x-launchkit-frontend</strong></NavbarItem>
@@ -35,18 +35,12 @@ const App = () => (
         </NavbarMenu>
       </Container>
     </Navbar>
-    <Container className={APP_CLASSNAME}>
+    <Container className={APP_CLASSNAME} isFluid>
       <Columns>
-        <Column isSize='1/2'>
+        <Column>
           <AssetPairsList />
-        </Column>
-        <Column isSize='1/2'>
-          <Container>
-            <CreateBasicOrderExample />
-          </Container>
-          <Container>
-            <BasicMakerOrdersListExample />
-          </Container>
+          <CreateBasicOrderExample />
+          <BasicMakerOrdersListExample />
         </Column>
       </Columns>
     </Container>

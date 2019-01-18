@@ -4,6 +4,7 @@ import { Web3Wrapper } from '@0x/web3-wrapper'
 import { APIOrder, PaginatedCollection, ERC20AssetData } from '@0x/types'
 import { BigNumber, assetDataUtils } from '0x.js'
 import { log } from '../../etc'
+import { NULL_ADDRESS } from '../../common/constants'
 import { getTokenDataByAddress } from '../../common/tokens'
 import getRelayerClient from '../../lib/getRelayerClient'
 import { Title, Table, Control, Select } from 'bloomer'
@@ -82,7 +83,7 @@ class BasicMakerOrdersList extends React.Component<IBasicMakerOrdersListProps, I
     const content = paginatedCollection.records.length > 0 ? this.renderTable() : this.renderNoResults
     return (
       <React.Fragment>
-        <Title isSize={2}>Available Asset Pairs</Title>
+        <Title isSize={2}>My Orders</Title>
         {content}
       </React.Fragment>
     )
@@ -116,15 +117,15 @@ class BasicMakerOrdersList extends React.Component<IBasicMakerOrdersListProps, I
       const expirationDate = new Date(new BigNumber(order.expirationTimeSeconds).toNumber() * 1000)
       return (
         <tr key={order.salt.toString()}>
-          <td>
+          <td title={order.makerAddress}>
             {order.makerAddress}
             <br/>
             {makerToken.symbol}
             <br/>
             {makerAssetAmount}
           </td>
-          <td>
-            {order.takerAddress}
+          <td title={order.takerAddress}>
+            {order.takerAddress === NULL_ADDRESS ? 'Anyone' : order.takerAddress}
             <br/>
             {takerToken.symbol}
             <br/>
@@ -139,7 +140,7 @@ class BasicMakerOrdersList extends React.Component<IBasicMakerOrdersListProps, I
       )
     })
     const table = (
-      <Table isBordered isStriped>
+      <Table isBordered isStriped isNarrow>
         <thead>
           <tr>
             <td>
