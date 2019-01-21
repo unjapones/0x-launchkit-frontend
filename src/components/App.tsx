@@ -13,6 +13,7 @@ import {
 import { WalletConnectionStatusWithWeb3 } from './Account'
 import { AssetPairsList } from './Assets'
 import { CreateBasicOrderExample, BasicMakerOrdersListExample } from './Order'
+import { BasicOrderBookListExample } from './OrderBook'
 import './App.css'
 
 const APP_CLASSNAME = 'app-container'
@@ -41,6 +42,7 @@ const App = () => (
           <AssetPairsList />
           <CreateBasicOrderExample />
           <BasicMakerOrdersListExample />
+          <BasicOrderBookListExample />
         </Column>
       </Columns>
     </Container>

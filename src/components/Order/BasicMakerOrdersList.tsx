@@ -4,14 +4,13 @@ import { Web3Wrapper } from '@0x/web3-wrapper'
 import { APIOrder, PaginatedCollection, ERC20AssetData } from '@0x/types'
 import { BigNumber, assetDataUtils } from '0x.js'
 import { log } from '../../etc'
-import { NULL_ADDRESS } from '../../common/constants'
+import { NULL_ADDRESS, DEFAULT_UI_UNIT_AMOUNT_DECIMALS } from '../../common/constants'
 import { getTokenDataByAddress } from '../../common/tokens'
 import getRelayerClient from '../../lib/getRelayerClient'
 import { Title, Table, Control, Select } from 'bloomer'
 
 const logger = log.getLogger('AssetPairs')
 const DEFAULT_PER_PAGE = 5
-const DEFAULT_UNIT_AMOUNT_DECIMALS = 4
 
 interface IBasicMakerOrdersListProps {
   relayerClient?: HttpClient
@@ -109,11 +108,11 @@ class BasicMakerOrdersList extends React.Component<IBasicMakerOrdersListProps, I
       const makerAssetAmount = Web3Wrapper.toUnitAmount(
           new BigNumber(order.makerAssetAmount),
           makerToken.decimals
-        ).toFixed(DEFAULT_UNIT_AMOUNT_DECIMALS)
+        ).toFixed(DEFAULT_UI_UNIT_AMOUNT_DECIMALS)
       const takerAssetAmount = Web3Wrapper.toUnitAmount(
           new BigNumber(order.takerAssetAmount),
           takerToken.decimals
-        ).toFixed(DEFAULT_UNIT_AMOUNT_DECIMALS)
+        ).toFixed(DEFAULT_UI_UNIT_AMOUNT_DECIMALS)
       const expirationDate = new Date(new BigNumber(order.expirationTimeSeconds).toNumber() * 1000)
       return (
         <tr key={order.salt.toString()}>
