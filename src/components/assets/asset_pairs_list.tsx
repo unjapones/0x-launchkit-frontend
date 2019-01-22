@@ -3,7 +3,7 @@ import { HttpClient } from '@0x/connect'
 import { AssetPairsResponse, AssetPairsItem, ERC20AssetData } from '@0x/types'
 import { assetDataUtils } from '0x.js'
 import { log } from '../../etc'
-import getRelayerClient from '../../lib/getRelayerClient'
+import getRelayerClient from '../../lib/get_relayer_client'
 import { ITokenData, getTokenDataByAddress } from '../../common/tokens'
 import { Title, Table } from 'bloomer'
 

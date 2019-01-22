@@ -10,11 +10,11 @@ import {
   NavbarEnd,
   NavbarItem
 } from 'bloomer'
-import { WalletConnectionStatusWithWeb3 } from './Account'
-import { AssetPairsList } from './Assets'
-import { CreateBasicOrderExample, BasicMakerOrdersListExample } from './Order'
-import { BasicOrderBookListExample } from './OrderBook'
-import './App.css'
+import { WalletConnectionStatusWithWeb3 } from './account'
+import { AssetPairsList } from './assets'
+import { CreateBasicOrderExample, BasicMakerOrdersListExample } from './order'
+import { BasicOrderBookListExample } from './orderbook'
+import './app.css'
 
 const APP_CLASSNAME = 'app-container'
 

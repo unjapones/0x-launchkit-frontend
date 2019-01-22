@@ -1,4 +1,4 @@
-import kovanTokenDataCollection from './kovanTokenDataCollection'
+import kovanTokenDataCollection from './kovan_token_data_collection'
 
 export interface ITokenData {
   address: string

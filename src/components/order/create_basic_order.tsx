@@ -1,11 +1,11 @@
 import React from 'react'
 import BigNumber from 'bignumber.js'
-import getRelayerClient from '../../lib/getRelayerClient'
+import getRelayerClient from '../../lib/get_relayer_client'
 import { Title } from 'bloomer'
 import { log } from '../../etc'
-import { createBasicSignedOrder } from '../../lib/orderUtils'
+import { createBasicSignedOrder } from '../../lib/order_utils'
 import { ITokenData, getTokenDataBySymbol } from '../../common/tokens'
-import BasicOrderForm from './BasicOrderForm'
+import BasicOrderForm from './basic_order_form'
 
 const logger = log.getLogger('CreateBasicOrder')
 
