@@ -1,15 +1,14 @@
 import React from 'react'
-import { BigNumber } from '0x.js'
 import { SignedOrder } from '@0x/types'
 import { DEFAULT_UI_UNIT_AMOUNT_DECIMALS } from '../../common/constants'
-import { getAssetAmountAsBignumber, bignumberAmountAsUIString } from '../../lib/assetUtils'
+import { getAssetAmountAsBignumber, bignumberAmountAsUIString } from '../../lib/asset_utils'
 
-interface IOrderBookRowProps {
+interface IOrderbookRowProps {
   order: SignedOrder
   isBid?: boolean
 }
 
-const OrderBookRow: React.FunctionComponent<IOrderBookRowProps> = (props) => {
+const OrderbookRow: React.FunctionComponent<IOrderbookRowProps> = (props) => {
   const { order, isBid } = props
 
   const bnMakerAssetAmount = getAssetAmountAsBignumber(order.makerAssetAmount, order.makerAssetData)
@@ -39,4 +38,4 @@ const OrderBookRow: React.FunctionComponent<IOrderBookRowProps> = (props) => {
     )
 }
 
-export { OrderBookRow }
+export { OrderbookRow }

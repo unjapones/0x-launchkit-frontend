@@ -1,4 +1,4 @@
 export {
   WalletConnectionStatus,
   WalletConnectionStatusWithWeb3
-} from './WalletConnectionStatus'
+} from './wallet_connection_status'

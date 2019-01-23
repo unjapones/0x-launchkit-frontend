@@ -4,11 +4,11 @@ import { assetDataUtils } from '@0x/order-utils'
 import { HttpClient } from '@0x/connect'
 import { Title, Table } from 'bloomer'
 import { NETWORK_ID, DEFAULT_UI_UNIT_AMOUNT_DECIMALS } from '../../common/constants'
-import getRelayerClient from '../../lib/getRelayerClient'
+import getRelayerClient from '../../lib/get_relayer_client'
 import { log } from '../../etc'
 import { getTokenDataBySymbol } from '../../common/tokens'
-import { getAssetAmountAsBignumber, bignumberAmountAsUIString } from '../../lib/assetUtils'
-import { OrderBookRow } from './BasicOrderBookRow'
+import { getAssetAmountAsBignumber, bignumberAmountAsUIString } from '../../lib/asset_utils'
+import { OrderbookRow } from './basic_orderbook_row'
 
 const logger = log.getLogger('BasicOrderBookList')
 
@@ -87,7 +87,7 @@ class BasicOrderBookList extends React.Component<IBasicOrderBookListProps, IBasi
   private mapAPIOrderPaginatedCollectionToRows = (collection: PaginatedCollection<APIOrder>, isBid: boolean) => {
     if (collection.records.length > 0) {
       return collection.records.map((order) =>
-        <OrderBookRow key={order.order.signature} order={order.order} isBid={isBid} />
+        <OrderbookRow key={order.order.signature} order={order.order} isBid={isBid} />
       )
     } else {
       return (<tr><td colSpan={4} key={isBid ? 'noBids' : 'noAsks'}>No {isBid ? 'bids' : 'asks'}</td></tr>)

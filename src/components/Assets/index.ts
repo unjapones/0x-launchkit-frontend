@@ -1,1 +1,0 @@
-export { AssetPairsList } from './AssetPairsList'

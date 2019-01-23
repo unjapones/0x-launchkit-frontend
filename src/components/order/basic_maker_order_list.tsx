@@ -6,7 +6,7 @@ import { BigNumber, assetDataUtils } from '0x.js'
 import { log } from '../../etc'
 import { NULL_ADDRESS, DEFAULT_UI_UNIT_AMOUNT_DECIMALS } from '../../common/constants'
 import { getTokenDataByAddress } from '../../common/tokens'
-import getRelayerClient from '../../lib/getRelayerClient'
+import getRelayerClient from '../../lib/get_relayer_client'
 import { Title, Table, Control, Select } from 'bloomer'
 
 const logger = log.getLogger('AssetPairs')

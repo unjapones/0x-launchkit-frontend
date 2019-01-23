@@ -1,7 +1,7 @@
 import React from 'react'
 import { configure, mount } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
-import WalletConnectionStatus from '../WalletConnectionStatus'
+import WalletConnectionStatus from '../wallet_connection_status'
 
 configure({ adapter: new Adapter() })
 
