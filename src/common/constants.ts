@@ -7,8 +7,11 @@ const DEFAULT_RELAYER_HOST =
   'http://localhost:3001/api'
 export const DEFAULT_RELAYER_URL = `${DEFAULT_RELAYER_HOST}/v2`
 
-// Must be the same a as 0x-launch-kit
+// Must be the same a as 0x-launch-kit (reqs may have this in their URL params)
 export const NETWORK_ID = 42 // Kovan
+export const NETWORK_RPC_URI_BY_ID = {
+  42: 'https://kovan.infura.io'
+}
 
 // For Kovan network
 // https://github.com/0xProject/0x-monorepo/blob/4b95e3d684/packages/contract-addresses/src/index.ts

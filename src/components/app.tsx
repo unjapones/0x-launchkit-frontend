@@ -10,7 +10,7 @@ import {
   NavbarEnd,
   NavbarItem
 } from 'bloomer'
-import { WalletConnectionStatusWithWeb3 } from './account'
+import { WalletConnectionStatusWithWeb3, TokenAllowanceExample } from './account'
 import { AssetPairsList } from './assets'
 import { CreateBasicOrderExample, BasicMakerOrdersListExample } from './order'
 import { BasicOrderBookListExample } from './orderbook'
@@ -39,10 +39,7 @@ const App = () => (
     <Container className={APP_CLASSNAME} isFluid>
       <Columns>
         <Column>
-          <AssetPairsList />
-          <CreateBasicOrderExample />
-          <BasicMakerOrdersListExample />
-          <BasicOrderBookListExample />
+          <TokenAllowanceExample />
         </Column>
       </Columns>
     </Container>
