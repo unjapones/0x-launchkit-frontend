@@ -1,0 +1,2 @@
+export const SET_ETH_ACCOUNT = 'SET_ETH_ACCOUNT'
+export type SET_ETH_ACCOUNT = typeof SET_ETH_ACCOUNT
