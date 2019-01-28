@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
 import { connectRouter } from 'connected-react-router'
 import { History } from 'history'
-import { IBlockchainAction } from '../actions'
-import { IBlockchainState, IStoreState } from '../types/index'
-import { SET_ETH_ACCOUNT, SET_WEB3_STATE } from '../constants/index'
+import { IBlockchainAction } from './actions'
+import { IBlockchainState, IStoreState } from './types'
+import { SET_ETH_ACCOUNT, SET_WEB3_STATE } from './constants'
 
 const initialState: IBlockchainState = {
   ethAccount: '',

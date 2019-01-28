@@ -2,18 +2,17 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Web3Provider from 'react-web3-provider'
 import { createBrowserHistory } from 'history'
-import { Route, Switch } from 'react-router' // react-router v4
+import { Route, Switch } from 'react-router'
 import { ConnectedRouter } from 'connected-react-router'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
 
 import * as serviceWorker from './serviceWorker'
-import { Provider } from 'react-redux'
 import { AppContainer } from './components/app'
 import { Marketplace } from './pages/marketplace'
 import { MyWallet } from './pages/my_wallet'
+import { createRootReducer } from './store/reducers'
 import './bulmaswatch-material.min.css'
-
-import { createStore } from 'redux'
-import { createRootReducer } from './reducers/index'
 
 export const history = createBrowserHistory()
 const rootReducer = createRootReducer(history)

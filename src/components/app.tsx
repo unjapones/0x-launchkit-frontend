@@ -2,7 +2,7 @@ import React from 'react'
 import { withWeb3 } from 'react-web3-provider'
 import { Dispatch } from 'redux'
 import { connect } from 'react-redux'
-import { setEthAccount, setWeb3State } from '../actions'
+import { setEthAccount, setWeb3State } from '../store/actions'
 
 interface IAppOwnProps {
   web3: any

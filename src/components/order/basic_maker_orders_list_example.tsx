@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import { IStoreState } from '../../types'
+import { IStoreState } from '../../store/types'
 import { BasicMakerOrdersList } from './basic_maker_order_list'
 
 interface IPropsFromState {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { IStoreState } from '../../types'
+import { IStoreState } from '../../store/types'
 
 interface IPropsFromState {
   ethAccount: string
