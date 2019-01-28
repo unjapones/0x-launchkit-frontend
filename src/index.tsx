@@ -8,7 +8,8 @@ import { ConnectedRouter } from 'connected-react-router'
 import * as serviceWorker from './serviceWorker'
 import { Provider } from 'react-redux'
 import { AppContainer } from './components/app'
-// import 'bulma/css/bulma.css'
+import { Marketplace } from './pages/marketplace'
+import { MyWallet } from './pages/my_wallet'
 import './bulmaswatch-material.min.css'
 
 import { createStore } from 'redux'
@@ -22,10 +23,13 @@ const store = createStore(rootReducer)
 const Web3WrappedApp = (
   <Provider store={store}>
     <Web3Provider>
-        <ConnectedRouter history={history}>
+      <ConnectedRouter history={history}>
+        <AppContainer>
           <Switch>
-            <Route exact path='/' render={() => (<AppContainer />)} />
+            <Route exact path='/' render={() => (<Marketplace />)} />
+            <Route exact path='/my-wallet' render={() => (<MyWallet />)} />
           </Switch>
+        </AppContainer>
       </ConnectedRouter>
     </Web3Provider>
   </Provider>

@@ -7,14 +7,14 @@ interface IPropsFromState {
   ethAccount: string
 }
 
-type WallecConnectionStatusProps = IPropsFromState
+type WalletConnectionStatusProps = IPropsFromState
 
-class WalletConnectionStatus extends React.PureComponent<WallecConnectionStatusProps> {
+class WalletConnectionStatus extends React.PureComponent<WalletConnectionStatusProps> {
   public render = () => {
     const { ethAccount } = this.props
     return (
       <div className='wallet-connection-status'>
-        <span>{ethAccount ? `Connected with: ${ethAccount}` : 'Not connected'}</span>
+        <p>{ethAccount ? `Connected with: ${ethAccount}` : 'Not connected'}</p>
       </div>
     )
   }
@@ -22,9 +22,7 @@ class WalletConnectionStatus extends React.PureComponent<WallecConnectionStatusP
 
 const mapStateToProps = (state: IStoreState): IPropsFromState => {
   const { ethAccount } = state.blockchain
-  return {
-    ethAccount
-  }
+  return { ethAccount }
 }
 
 const WalletConnectionStatusContainer = connect(mapStateToProps)(WalletConnectionStatus)
