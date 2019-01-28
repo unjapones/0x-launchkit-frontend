@@ -13,12 +13,11 @@ import './bulmaswatch-material.min.css'
 
 import { createStore } from 'redux'
 import { createRootReducer } from './reducers/index'
-import { IStoreState } from './types/index'
 
 export const history = createBrowserHistory()
 const rootReducer = createRootReducer(history)
 
-const store = createStore<IStoreState, any, any, any>(rootReducer)
+const store = createStore(rootReducer)
 
 const Web3WrappedApp = (
   <Provider store={store}>
