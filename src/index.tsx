@@ -7,7 +7,7 @@ import { ConnectedRouter } from 'connected-react-router'
 
 import * as serviceWorker from './serviceWorker'
 import { Provider } from 'react-redux'
-import App from './components/app'
+import { AppContainer } from './components/app'
 // import 'bulma/css/bulma.css'
 import './bulmaswatch-material.min.css'
 
@@ -25,7 +25,7 @@ const Web3WrappedApp = (
     <Web3Provider>
         <ConnectedRouter history={history}>
           <Switch>
-            <Route exact path='/' render={() => (<App />)} />
+            <Route exact path='/' render={() => (<AppContainer />)} />
           </Switch>
       </ConnectedRouter>
     </Web3Provider>
