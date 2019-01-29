@@ -1,31 +1,14 @@
+import { createAction } from 'typesafe-actions'
+import { SET_ETH_ACCOUNT, SET_WEB3_STATE } from './constants'
 import { Web3Wrapper } from '@0x/web3-wrapper'
-import * as constants from './constants'
 
-export interface ISetEthAccount {
-  type: constants.SET_ETH_ACCOUNT
-  value: string
-}
+export const setEthAccount = createAction(SET_ETH_ACCOUNT, (resolve) => {
+  return (ethAccount: string) => resolve(ethAccount)
+})
 
-export interface ISetWeb3State {
-  type: constants.SET_WEB3_STATE
-  value: string
-}
-
-export type IBlockchainAction = ISetEthAccount | ISetWeb3State
-
-export const setEthAccount = (ethAccount: string = ''): ISetEthAccount => {
-  return {
-    type: constants.SET_ETH_ACCOUNT,
-    value: ethAccount
-  }
-}
-
-export const setWeb3State = (web3State: string = 'loading'): ISetWeb3State => {
-  return {
-    type: constants.SET_WEB3_STATE,
-    value: web3State
-  }
-}
+export const setWeb3State = createAction(SET_WEB3_STATE, (resolve) => {
+  return (web3State: string) => resolve(web3State)
+})
 
 export function initWallet () {
   return async (dispatch: any) => {

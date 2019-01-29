@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux'
 import { connectRouter } from 'connected-react-router'
 import { History } from 'history'
-import { IBlockchainAction } from './actions'
+import { ActionType, getType } from 'typesafe-actions'
+import * as actions from './actions'
 import { IBlockchainState, IStoreState } from './types'
-import { SET_ETH_ACCOUNT, SET_WEB3_STATE } from './constants'
+
+export type RootAction = ActionType<typeof actions>
 
 const initialState: IBlockchainState = {
   ethAccount: '',
@@ -12,13 +14,13 @@ const initialState: IBlockchainState = {
 
 export function blockchain (
   state: IBlockchainState = initialState,
-  action: IBlockchainAction
+  action: RootAction
 ): IBlockchainState {
   switch (action.type) {
-    case SET_ETH_ACCOUNT:
-      return { ...state, ethAccount: action.value }
-    case SET_WEB3_STATE:
-      return { ...state, web3State: action.value }
+    case getType(actions.setEthAccount):
+      return { ...state, ethAccount: action.payload }
+    case getType(actions.setWeb3State):
+      return { ...state, web3State: action.payload }
   }
   return state
 }
