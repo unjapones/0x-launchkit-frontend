@@ -1,47 +1,30 @@
 import React from 'react'
-import { withWeb3 } from 'react-web3-provider'
+import { connect } from 'react-redux'
 
-interface IWalletConnectionStatusProps {
-  web3: any
-}
-interface IWalletConnectionStatusState {
+import { IStoreState } from '../../store/types'
+
+interface IPropsFromState {
   ethAccount: string
 }
 
-class WalletConnectionStatus extends React.Component<
-  IWalletConnectionStatusProps,
-  IWalletConnectionStatusState
-> {
-  public state = {
-    ethAccount: ''
-  }
+type WalletConnectionStatusProps = IPropsFromState
 
-  public componentDidUpdate = (prevProps: IWalletConnectionStatusProps) => {
-    const { web3 } = this.props
-    if (prevProps.web3 !== web3) {
-      const { ethAccount } = this.state
-      web3.eth.getAccounts().then((accounts: string[]) => {
-        if (ethAccount !== accounts[0]) {
-          this.setState({ ethAccount: accounts[0] })
-        }
-      })
-    }
-  }
-
+class WalletConnectionStatus extends React.PureComponent<WalletConnectionStatusProps> {
   public render = () => {
-    const { ethAccount } = this.state
+    const { ethAccount } = this.props
     return (
       <div className='wallet-connection-status'>
-        <span>{ethAccount ? `Connected with: ${ethAccount}` : 'Not connected'}</span>
+        <p>{ethAccount ? `Connected with: ${ethAccount}` : 'Not connected'}</p>
       </div>
     )
   }
 }
 
-const WalletConnectionStatusWithWeb3 = withWeb3(WalletConnectionStatus)
-
-export {
-  WalletConnectionStatusWithWeb3,
-  WalletConnectionStatus
+const mapStateToProps = (state: IStoreState): IPropsFromState => {
+  const { ethAccount } = state.blockchain
+  return { ethAccount }
 }
-export default WalletConnectionStatus
+
+const WalletConnectionStatusContainer = connect(mapStateToProps)(WalletConnectionStatus)
+
+export { WalletConnectionStatus, WalletConnectionStatusContainer }

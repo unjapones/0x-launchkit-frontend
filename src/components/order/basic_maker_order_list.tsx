@@ -15,14 +15,13 @@ const DEFAULT_PER_PAGE = 5
 interface IBasicMakerOrdersListProps {
   relayerClient?: HttpClient
   perPage?: number
-  web3?: any
+  ethAccount: string
 }
 
 interface IBasicMakerOrdersListState {
   loading: boolean
   paginatedCollection: PaginatedCollection<APIOrder>
   relayerClient: HttpClient
-  ethAccount: string
 }
 
 class BasicMakerOrdersList extends React.Component<IBasicMakerOrdersListProps, IBasicMakerOrdersListState> {
@@ -34,27 +33,20 @@ class BasicMakerOrdersList extends React.Component<IBasicMakerOrdersListProps, I
       perPage: 0,
       records: []
     },
-    relayerClient: this.props.relayerClient || getRelayerClient(),
-    ethAccount: ''
+    relayerClient: this.props.relayerClient || getRelayerClient()
   }
 
-  public componentDidUpdate = async (prevProps: any) => {
-    const { web3 } = this.props
-    if (prevProps.web3 !== web3) {
-      const { ethAccount } = this.state
-      // @TODO: ethAccount is used to check & render "no web3", but using it will be a common thing
-      // generalize and ease its fetch/access for future UI components
-      const accounts: string[] = await web3.eth.getAccounts()
-      if (accounts && accounts.length > 0 && ethAccount !== accounts[0]) {
-        this.setState({ ethAccount: accounts[0] })
-        this.getOrders()
-      }
+  public componentDidUpdate = async (prevProps: IBasicMakerOrdersListProps) => {
+    if (prevProps.ethAccount !== this.props.ethAccount) {
+      this.getOrders()
     }
   }
 
   public getOrders = async (page: number = 0) => {
     try {
-      const { relayerClient, ethAccount } = this.state
+      const { ethAccount } = this.props
+      logger.debug(ethAccount)
+      const { relayerClient } = this.state
       const perPage = this.props.perPage || DEFAULT_PER_PAGE
       const paginatedCollection: PaginatedCollection<APIOrder> = await relayerClient
         .getOrdersAsync({

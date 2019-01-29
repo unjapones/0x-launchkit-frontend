@@ -1,15 +1,35 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Web3Provider from 'react-web3-provider'
+import { createBrowserHistory } from 'history'
+import { Route, Switch } from 'react-router'
+import { ConnectedRouter } from 'connected-react-router'
+import { createStore, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk'
+import { Provider } from 'react-redux'
+
 import * as serviceWorker from './serviceWorker'
-import App from './components/app'
-// import 'bulma/css/bulma.css'
+import { AppContainer } from './components/app'
+import { Marketplace } from './pages/marketplace'
+import { MyWallet } from './pages/my_wallet'
+import { createRootReducer } from './store/reducers'
 import './bulmaswatch-material.min.css'
 
+export const history = createBrowserHistory()
+const rootReducer = createRootReducer(history)
+
+const store = createStore(rootReducer, applyMiddleware(thunk))
+
 const Web3WrappedApp = (
-  <Web3Provider>
-    <App />
-  </Web3Provider>
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
+      <AppContainer>
+        <Switch>
+          <Route exact path='/' render={() => (<Marketplace />)} />
+          <Route exact path='/my-wallet' render={() => (<MyWallet />)} />
+        </Switch>
+      </AppContainer>
+    </ConnectedRouter>
+  </Provider>
 )
 
 ReactDOM.render(Web3WrappedApp, document.getElementById('root'))

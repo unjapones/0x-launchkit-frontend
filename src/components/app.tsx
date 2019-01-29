@@ -1,52 +1,33 @@
 import React from 'react'
-import {
-  Container,
-  Columns,
-  Column,
-  Navbar,
-  NavbarBrand,
-  NavbarMenu,
-  NavbarStart,
-  NavbarEnd,
-  NavbarItem
-} from 'bloomer'
-import { WalletConnectionStatusWithWeb3 } from './account'
-import { AssetPairsList } from './assets'
-import { CreateBasicOrderExample, BasicMakerOrdersListExample } from './order'
-import { BasicOrderBookListExample } from './orderbook'
-import './app.css'
+import { AnyAction } from 'redux'
+import { ThunkDispatch } from 'redux-thunk'
+import { connect } from 'react-redux'
+import { initWallet } from '../store/actions'
 
-const APP_CLASSNAME = 'app-container'
+interface IAppOwnProps {
+  children: React.ReactNode
+}
 
-const App = () => (
-  <React.Fragment>
-    <Navbar className='is-dark'>
-      <Container isFluid>
-        <NavbarBrand>
-          <NavbarStart>
-            <NavbarItem href='/' isHidden='touch'><strong>0x-launchkit-frontend</strong></NavbarItem>
-          </NavbarStart>
-        </NavbarBrand>
-        <NavbarMenu>
-          <NavbarEnd>
-            <NavbarItem>
-              <WalletConnectionStatusWithWeb3 />
-            </NavbarItem>
-          </NavbarEnd>
-        </NavbarMenu>
-      </Container>
-    </Navbar>
-    <Container className={APP_CLASSNAME} isFluid>
-      <Columns>
-        <Column>
-          <AssetPairsList />
-          <CreateBasicOrderExample />
-          <BasicMakerOrdersListExample />
-          <BasicOrderBookListExample />
-        </Column>
-      </Columns>
-    </Container>
-  </React.Fragment>
-)
+interface IPropsFromDispatch {
+  onInitWallet: () => any
+}
 
-export default App
+type AppProps = IAppOwnProps & IPropsFromDispatch
+
+class App extends React.Component<AppProps> {
+  public componentWillMount = () => {
+    this.props.onInitWallet()
+  }
+
+  public render = () => this.props.children
+}
+
+const mapDispatchToProps = (dispatch: ThunkDispatch<{}, {}, AnyAction>) => {
+  return {
+    onInitWallet: () => dispatch(initWallet())
+  }
+}
+
+const AppContainer = connect(null, mapDispatchToProps)(App)
+
+export { App, AppContainer }
