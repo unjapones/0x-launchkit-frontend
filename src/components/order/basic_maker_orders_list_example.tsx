@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 
 import { IStoreState } from '../../store/types'
+import { getEthAccount } from '../../store/selectors'
 import { BasicMakerOrdersList } from './basic_maker_order_list'
 
 interface IPropsFromState {
@@ -8,9 +9,8 @@ interface IPropsFromState {
 }
 
 const mapStateToProps = (state: IStoreState): IPropsFromState => {
-  const { ethAccount } = state.blockchain
   return {
-    ethAccount
+    ethAccount: getEthAccount(state)
   }
 }
 

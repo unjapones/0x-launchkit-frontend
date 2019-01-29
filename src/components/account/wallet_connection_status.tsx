@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { IStoreState } from '../../store/types'
+import { getEthAccount } from '../../store/selectors'
 
 interface IPropsFromState {
   ethAccount: string
@@ -21,8 +22,9 @@ class WalletConnectionStatus extends React.PureComponent<WalletConnectionStatusP
 }
 
 const mapStateToProps = (state: IStoreState): IPropsFromState => {
-  const { ethAccount } = state.blockchain
-  return { ethAccount }
+  return {
+    ethAccount: getEthAccount(state)
+  }
 }
 
 const WalletConnectionStatusContainer = connect(mapStateToProps)(WalletConnectionStatus)
